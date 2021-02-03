@@ -7,4 +7,5 @@ This is repo for supermetrics job application
 
 To run the app:
 >composer install
+
 >php index.php
