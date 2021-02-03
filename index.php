@@ -9,9 +9,9 @@ class Kernel
     public function index()
     {
         $app = new DataParser();
-        print_r($app->index());
+        return $app->index();
     }
 }
 
 $test = new Kernel;
-$test->index();
+echo $test->index();

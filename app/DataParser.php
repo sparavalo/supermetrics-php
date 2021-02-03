@@ -13,19 +13,19 @@ class DataParser
     const RESULTS_PER_PAGE = 100;
 
 
-    public function index(): array
+    public function index(): string
     {
         $connection = new ApiRequests($this->serviceUrl);
         $token = $connection->getToken();
 
         $data = $this->getPagedData($token);
 
-        return [
+        return json_encode([
             'averageCharLengthPerMonth' => $this->calculateAveragePostLengthPerMonth($data),
             'longestPostByCharLengthPerMonth' => $this->calculateLongestPostPerManthByCharLenght($data),
             'totalPostsSplitByWeekNumber' => $this->getPostsByWeekNumber($data),
             'averagePerUserPerMonth' => $this->calculateAveragePerUserPerMonth($data)
-        ];
+        ]);
     }
 
     public function calculateAveragePostLengthPerMonth(array $data): array
